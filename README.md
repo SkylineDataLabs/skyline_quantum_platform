@@ -1,5 +1,7 @@
 # Quantum
 
+![Quantum Home](images/quantum-home.png)
+
 An AI-powered cybersecurity reconnaissance platform that analyzes an organization's public-facing security posture and generates professional PDF assessment reports.
 
 ## Features
