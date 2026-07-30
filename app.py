@@ -12,13 +12,16 @@ st.set_page_config(
 )
 
 st.title("Skyline Quantum Platform")
-st.subheader("Post-Quantum Cryptography Readiness Scanner")
+st.subheader("AI-Powered Cybersecurity Assessment Platform")
 
-st.write("Platform initialized successfully.")
+st.write(
+    "Analyze an organization's public-facing security posture and generate a professional PDF security assessment.")
 
-domain = st.text_input("Enter a domain to scan")
+domain = st.text_input(
+    "Company or Domain",
+    placeholder="e.g. playstation.com")
 
-if st.button("Run Scan"):
+if st.button("Generate Report"):
 
     if domain:
 
@@ -64,3 +67,8 @@ if st.button("Run Scan"):
 
         except Exception as e:
             st.error(f"Scan failed: {e}")
+
+st.caption(
+    "Quantum analyzes publicly available information only. "
+    "It does not perform intrusive testing or attempt to exploit vulnerabilities."
+)
