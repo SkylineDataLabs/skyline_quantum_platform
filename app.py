@@ -50,7 +50,7 @@ if st.button("Generate Report", type="primary"):
             pdf_path = create_pdf_report(
                 domain,
                 risk_results["risk_score"],
-                risk_results["findings"]
+                risk_results["findings"],
                 tls_results,
             )
 
