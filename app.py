@@ -44,14 +44,14 @@ if st.button("Generate Report", type="primary"):
     else:
         try:
             with st.spinner(f"Analyzing {domain}..."):
-                scan_results = scan_tls(domain)
-                risk_results = calculate_risk(scan_results)
+                tls_results = scan_tls(domain)
+                risk_results = calculate_risk(tls_results)
 
-                pdf_path = create_pdf_report(
-                    domain,
-                    scan_results,
-                    risk_results,
-                )
+            pdf_path = create_pdf_report(
+                domain,
+                scan_results["risk_score"],
+                risk_results
+            )
 
             st.success("Assessment complete. Your PDF report is ready.")
 
