@@ -49,8 +49,9 @@ if st.button("Generate Report", type="primary"):
 
             pdf_path = create_pdf_report(
                 domain,
-                scan_results["risk_score"],
-                risk_results
+                risk_results["risk_score"],
+                risk_results["findings"]
+                tls_results,
             )
 
             st.success("Assessment complete. Your PDF report is ready.")
