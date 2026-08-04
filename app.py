@@ -6,6 +6,9 @@ from core.tls_scanner import scan_tls
 from core.risk_engine import calculate_risk
 from reports.pdf_generator import create_pdf_report
 
+from services.database import save_report
+
+
 
 # Browser-tab and page settings
 st.set_page_config(
@@ -54,6 +57,13 @@ if st.button("Generate Report", type="primary"):
                 tls_results,
             )
 
+            save_report(
+    company_name=domain,
+    status="success",
+    risk_score=risk_results["risk_score"],
+    report_filename=Path(pdf_path).name,
+)
+
             st.success("Assessment complete. Your PDF report is ready.")
 
             st.subheader("Assessment Results")
@@ -79,9 +89,16 @@ if st.button("Generate Report", type="primary"):
                 )
 
         except Exception as error:
+            try:
+                save_report(
+                    company_name=domain,
+                    status="failed",
+                    error_message=str(error),
+                )
+            except Exception:
+                pass
+
             st.error(f"The assessment could not be completed: {error}")
-
-
 # Disclaimer
 st.divider()
 

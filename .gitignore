@@ -12,3 +12,6 @@ __pycache__/
 
 # Generated reports
 *_quantum_report.pdf
+
+# secrete key
+.streamlit/secrets.toml
